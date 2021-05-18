@@ -37,5 +37,5 @@ def maxSum(arr,n):
     return sum
 
 arr = [4, 2, 1, 8]
-maxSum(arr, len(arr))
+print(maxSum(arr, len(arr)))
         
