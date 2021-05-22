@@ -17,8 +17,7 @@ class Solution:
         
         return countArr
 
-for _ in range(0,int(input())):
-    n, x = map(int, input().split())
-    arr = list(map(int, input().strip().split()))
-    ans = Solution().countArray(arr, n, x)
-    print(*ans)
+n, x = map(int, input("Enter n and x: ").split())
+arr = list(map(int, input("Enter the array: ").strip().split()))
+ans = Solution().countArray(arr, n, x)
+print("Count array:", *ans)
