@@ -3,17 +3,24 @@ def countPairs(arr, n):
     if n == 1:
         return 0
         
-    minEle, maxEle = 100000, 0
-    countArr = [0] * 100000
+    minEle, maxEle = 100000, -100000
 
     for i in range(n):
-        if(arr[i] < minEle):
-            minEle = arr[i]
-        if(arr[i] > maxEle):
-            maxEle = arr[i]
-        countArr[arr[i]] += 1
+        minEle = min(arr[i], minEle)
+        maxEle = max(arr[i], maxEle)
     
-    return countArr[minEle] * countArr[maxEle]
+    minCount, maxCount = 0, 0
+    for i in range(n):
+        if arr[i] == minEle:
+            minCount += 1
+        elif arr[i] == maxEle:
+            maxCount += 1
+    
+    # If the elements are equal
+    if minEle == maxEle:
+        return (n * (n - 1) // 2)
+    # If the elements are not equal
+    return minCount * maxCount
 
 #  Driver Code Starts
 t = int(input("Enter the number of test cases: "))
