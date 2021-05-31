@@ -63,7 +63,7 @@ class LinkedList:
     def printList(self):
         temp = self.head
         while(temp):
-            print(str(temp.data) + " <-> ", end="")
+            print(str(temp.data) + " -> ", end="")
             temp = temp.next
         print("Null")
 
@@ -77,8 +77,7 @@ if __name__ == "__main__" :
         print("3. Insert node before a node")
         print("4. Insert node at the end")
         print("5. Print list")
-        print("6. Print reversed list")
-        print("7. Print number of nodes")
+        print("6. Print number of nodes")
 
         choice = int(input("Enter your choice: "))
         if(choice == 1):
@@ -99,8 +98,6 @@ if __name__ == "__main__" :
         elif(choice == 5):
             llist.printList()
         elif(choice == 6):
-            llist.printListReverse()
-        elif(choice == 7):
             print("Number of nodes:", llist.nodeCount)
         else: 
             print("Wrong choice")
