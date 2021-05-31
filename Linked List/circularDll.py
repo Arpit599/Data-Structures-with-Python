@@ -13,10 +13,15 @@ class doubleLinkedList:
     def insertAtFront(self, data):
         newNode = Node(data)
         newNode.next = self.head
-
         #Checking if newNode is the first node in the list or not
         if self.head is not None:
+            newNode.prev = self.head.prev
+            self.head.prev.next = newNode
             self.head.prev = newNode
+        else:
+            newNode.next = newNode
+            newNode.prev = newNode
+
         self.head = newNode
         self.nodeCount += 1
 
@@ -25,13 +30,14 @@ class doubleLinkedList:
 
         #Checking if newNode is the first node in the list or not
         if self.head is not None:
-            temp = self.head
-            while(temp.next):
-                temp = temp.next
-            temp.next = newNode
-            newNode.prev = temp
+            newNode.next = self.head
+            newNode.prev = self.head.prev
+            self.head.prev.next = newNode
+            self.head.prev = newNode
         else:
             self.head = newNode
+            newNode.next = newNode
+            newNode.prev = newNode
         self.nodeCount += 1
     
     def insertAfter(self, prev, data):
@@ -43,8 +49,7 @@ class doubleLinkedList:
         newNode.prev = prev
 
         #If element is not to be inserted in the end
-        if prev.next is not None:
-            prev.next.prev = newNode
+        prev.next.prev = newNode
 
         prev.next = newNode
         self.nodeCount += 1
@@ -55,15 +60,13 @@ class doubleLinkedList:
         
         newNode = Node(data)
         newNode.next = prev
-        newNode.prev = prev.prev
-
+        newNode.prev = prev.prev 
+        prev.prev.next = newNode
+        prev.prev = newNode
+        
         #If element is to be inserted in the beginning
         if prev is self.head:
             self.head = newNode
-        else:
-            prev.prev.next = newNode
-        
-        prev.prev = newNode
         self.nodeCount += 1
 
     def findNode(self, nodeNum):
@@ -82,23 +85,28 @@ class doubleLinkedList:
             return
 
         temp = self.head 
-        while(temp):
+        #Printing the head first and incrementing the pointer otherwise loop will not run
+        print(str(temp.data) + " <-> ", end="")
+        temp = temp.next
+
+        while(temp != self.head):
             print(str(temp.data) + " <-> ", end="")
             temp = temp.next
-        print("Null")
+        print("Head")
 
     def printListReverse(self):
         if self.head is None:
             print("Empty list! Nothing to print")
             return
 
-        temp = self.head 
-        while(temp.next is not None):
-            temp = temp.next
-        while(temp is not None):
+        temp = self.head.prev 
+        while(temp != self.head):
             print(str(temp.data) + " <-> ", end="")
             temp = temp.prev
-        print("Null")
+
+        #To print the head element as it gets skipped in the loop above
+        print(str(temp.data) + " <-> ", end="")
+        print("Head")
 
 if __name__ == "__main__":
     dll = doubleLinkedList()
