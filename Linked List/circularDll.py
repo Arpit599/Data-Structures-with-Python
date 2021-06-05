@@ -69,6 +69,75 @@ class doubleLinkedList:
             self.head = newNode
         self.nodeCount += 1
 
+    def deleteHead(self):
+        #If list is empty, return 
+        if self.nodeCount == 0:
+            print("List is empty!")
+            return
+        #If there is single node in the list
+        elif self.nodeCount == 1:
+            self.head.next = None
+            self.head.prev = None
+            self.head = None
+        #If there are more than one nodes in the list
+        else:
+            self.head.prev.next = self.head.next
+            self.head.next.prev = self.head.prev
+            self.head = self.head.next
+
+        self.nodeCount -= 1
+        
+    def deleteEnd(self):
+        #If list is empty, return 
+        if self.nodeCount == 0:
+            print("List is empty!")
+            return
+        #If there is single node in the list
+        elif self.nodeCount == 1:
+            self.head.next = None
+            self.head.prev = None
+            self.head = None
+        #If there are more than one nodes in the list
+        else:
+            self.head.prev.prev.next = self.head
+            self.head.prev = self.head.prev.prev
+        
+        self.nodeCount -= 1
+
+    def deleteAfter(self, givenNode):
+        if self.nodeCount == 1:
+            print("Last node! Invalid operation")
+            return
+        #If givenNode is last node, the next node is head node, so delete head node
+        elif givenNode.next == self.head:
+            givenNode.next = self.head.next
+            self.head.next.prev = givenNode
+            self.head = self.head.next
+        #For number of nodes greater than 3
+        else:
+            givenNode.next.next.prev = givenNode
+            givenNode.next = givenNode.next.next
+
+        self.nodeCount -= 1       
+
+    def deleteBefore(self, givenNode):
+        if self.nodeCount == 1:
+            print("Last node! Invalid operation")
+            return
+        #If givenNode is first node, the previous node is to be delete
+        elif givenNode == self.head:
+            givenNode.prev.prev.next = self.head
+            self.head.prev = givenNode.prev.prev
+        #For number of nodes greater than 3 or if the second node is the given node then change the head
+        else:
+            #If givenNode is second node, then delete the head node
+            if givenNode.prev == self.head:
+                self.head = self.head.next
+            givenNode.prev.prev.next = givenNode
+            givenNode.prev = givenNode.prev.prev
+
+        self.nodeCount -= 1
+
     def findNode(self, nodeNum):
         temp = self.head
         if nodeNum > self.nodeCount:
@@ -115,10 +184,13 @@ if __name__ == "__main__":
         print("2. Insert node after a node")
         print("3. Insert node before a node")
         print("4. Insert node at the end")
-        print("5. Print list")
-        print("6. Print reversed list")
-        print("7. Print number of nodes")
-
+        print("5. Delete node at the front")
+        print("6. Delete node after a node")
+        print("7. Delete node before a node")
+        print("8. Delete node at the end")
+        print("9. Print list")
+        print("10. Print reversed list")
+        print("11. Print number of nodes")
         choice = int(input("Enter your choice: "))
         if(choice == 1):
             data = int(input("Enter the node value: "))
@@ -137,10 +209,28 @@ if __name__ == "__main__":
             data = int(input("Enter the node value: "))
             dll.insertAtEnd(data)
         elif(choice == 5):
-            dll.printList()
+            dll.deleteHead()
         elif(choice == 6):
-            dll.printListReverse()
+            nodeNumber = int(input("Enter number of the node after which you want to delete: "))
+            node = dll.findNode(nodeNumber)
+            if node == None:
+                print("Invalid operation")
+                continue
+            dll.deleteAfter(node)
         elif(choice == 7):
-            print("Number of nodes:",dll.nodeCount)
+            nodeNumber = int(input("Enter number of the node before which you want to delete: "))
+            node = dll.findNode(nodeNumber)
+            if node == None:
+                print("Invalid operation")
+                continue
+            dll.deleteBefore(node)
+        elif(choice == 8):
+            dll.deleteEnd()
+        elif(choice == 9):
+            dll.printList()
+        elif(choice == 10):
+            dll.printListReverse()
+        elif(choice == 11):
+            print("Number of nodes:", dll.nodeCount)
         else: 
             print("Wrong choice")
