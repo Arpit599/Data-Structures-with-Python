@@ -1,5 +1,5 @@
 #Function to insert a node in the middle of the linked list.
-def insertInMid(head,node):
+def insertInMid(head, node):
     slow = head
     fast = head
     while fast.next != None and fast.next.next != None:
