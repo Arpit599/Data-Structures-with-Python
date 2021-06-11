@@ -36,14 +36,12 @@ def addEdge(src, dest):
         print("Source and destination can not be same!")
         return
     #If there is already an edge between source and destination
-    if graph[vertices.index(src)][vertices.index(dest)] == 1 \
-        or graph[vertices.index(dest)][vertices.index(src)] == 1:
+    if graph[vertices.index(src)][vertices.index(dest)] == 1:
         print("Edge already present!")
         return
 
     #Add new edge if none of the above case is present
     graph[vertices.index(src)][vertices.index(dest)] = 1
-    graph[vertices.index(dest)][vertices.index(src)] = 1
 
 def removeVertex(vertex):
     global graph, vertices_num, vertices
@@ -87,14 +85,12 @@ def removeEdge(src, dest):
         return
 
     #If there is no edge between source and destination
-    if graph[vertices.index(src)][vertices.index(dest)] == 0 \
-        or graph[vertices.index(dest)][vertices.index(src)] == 0:
+    if graph[vertices.index(src)][vertices.index(dest)] == 0:
         print("Edge already absent!")
         return
 
     #Remove edge if none of the above case is present
     graph[vertices.index(src)][vertices.index(dest)] = 0
-    graph[vertices.index(dest)][vertices.index(src)] = 0
 
 def printGraph():
     printVertices()
