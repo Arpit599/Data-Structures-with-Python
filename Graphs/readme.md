@@ -8,4 +8,4 @@
 
 1. [Undirected Graph Using Adjacency List](https://github.com/Arpit599/Data-Structures-with-Python/blob/master/Graphs/graphUsingAdjacencyList.py)
 2. [Undirected Graph Using Adjacency Matrix](https://github.com/Arpit599/Data-Structures-with-Python/blob/master/Graphs/graphUsingAdjacencyMatrix.py)
-3. [Directed Graph Using Adjacency Matrix]()
+3. [Directed Graph Using Adjacency Matrix](https://github.com/Arpit599/Data-Structures-with-Python/blob/master/Graphs/directedGraphUsingMat.py)
