@@ -3,6 +3,7 @@
 1. [Graph and its representations](https://www.geeksforgeeks.org/graph-and-its-representations/)
 2. [Graphs in Python: Adjacency Matrix](https://medium.com/analytics-vidhya/graphs-in-python-adjacency-matrix-d0726620e8d7)
 3. [Add and Remove vertex in Adjacency Matrix representation of Graph](https://www.geeksforgeeks.org/add-and-remove-vertex-in-adjacency-matrix-representation-of-graph/)
+4. [Add and Remove vertex in Adjacency List representation of Graph](https://www.geeksforgeeks.org/add-and-remove-vertex-in-adjacency-list-representation-of-graph/)
 
 ## Graph Implementation
 
