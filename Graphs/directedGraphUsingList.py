@@ -70,7 +70,7 @@ class Graph:
         if src == dest:
             print("\nSource and destination can't be same!\n")
             return
-        #Check if there is already no edge, checking one way is enough
+        #Check if there is already no edge\
         if not self.checkEdgeExistence(src, dest):
             print("\nEdge already absent!\n")
             return
