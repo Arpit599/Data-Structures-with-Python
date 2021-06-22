@@ -50,4 +50,3 @@ if __name__ == "__main__":
         print("Nodes are not present!", n1Exists, n2Exists)
     else:
         print("The LCA is", lca)
-    # print("The LCA is", lca)
